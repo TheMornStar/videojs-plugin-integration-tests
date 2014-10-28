@@ -1,5 +1,7 @@
 # VideoJS Plugin Integration
 
+VideoJS plugin integration testing platform.
+
 To run:
 ```bash
 $ bower install
