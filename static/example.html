@@ -53,17 +53,67 @@
     </video>
   </div>
 
+  <div class="example-video-container">
+    <video id="vid2" class="video-js vjs-default-skin" autoplay controls preload="auto"
+        poster="http://video-js.zencoder.com/oceans-clip.png"
+        data-setup='{}'
+        width='640'
+        height='400'
+        >
+      <source src="http://video-js.zencoder.com/oceans-clip.mp4" type='video/mp4'>
+      <source src="http://video-js.zencoder.com/oceans-clip.webm" type='video/webm'>
+      <source src="http://video-js.zencoder.com/oceans-clip.ogv" type='video/ogg'>
+      <p>Video Playback Not Supported</p>
+    </video>
+  </div>
+
   <script>
-    var vid1 = videojs('vid1');
+    var vid1 = videojs('vid1'),
+        vid2 = videojs('vid2');
 
     vid1.muted(true);
-    vid1.ads();
     vid1.vast({
       url: 'http://ad3.liverail.com/?LR_PUBLISHER_ID=1331&LR_CAMPAIGN_ID=229&LR_SCHEMA=vast2'
     });
     vid1.autoplayToggle({
       namespace: 'videojs-plugin-integration'
     });
+    vid1.sharetools = {
+      showOnPause: true,
+      videoId: 'vid1',
+      shareUrl: "http://" + document.location.host + '123/abc',
+      embed: function(settings) {
+        return '<iframe name="embedded" allowfullscreen webkitallowfullscreen mozallowfullscreen frameborder="no" width="480" height="270" scrolling="no" src="http://' + document.location.host + '/video/embed?id=vid1"></iframe>';
+      },
+      facebook: function(settings) {
+        return "https://www.facebook.com/sharer/sharer.php?u=123123fsd";
+      },
+      twitter: function(settings) {
+        return "https://twitter.com/share?url=123tsd&via=@asdf";
+      }
+    };
+
+    vid2.muted(true);
+    vid2.vast({
+      url: 'http://ad3.liverail.com/?LR_PUBLISHER_ID=1331&LR_CAMPAIGN_ID=229&LR_SCHEMA=vast2'
+    });
+    vid2.autoplayToggle({
+      namespace: 'videojs-plugin-integration'
+    });
+    vid2.sharetools = {
+      showOnPause: true,
+      videoId: 'vid2',
+      shareUrl: "http://" + document.location.host + '123/abc',
+      embed: function(settings) {
+        return '<iframe name="embedded" allowfullscreen webkitallowfullscreen mozallowfullscreen frameborder="no" width="480" height="270" scrolling="no" src="http://' + document.location.host + '/video/embed?id=vid2"></iframe>';
+      },
+      facebook: function(settings) {
+        return "https://www.facebook.com/sharer/sharer.php?u=123123fsd";
+      },
+      twitter: function(settings) {
+        return "https://twitter.com/share?url=123tsd&via=@asdf";
+      }
+    };
   </script>
 
 </body>

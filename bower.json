@@ -2,7 +2,8 @@
   "name": "videojs-plugin-integration-tests",
   "dependencies": {
     "videojs": "4.7.1",
-    "videojs-vast": "theonion/videojs-vast-plugin#3c26ee65423478d5e864a8f445cb6ec940a28aa0",
-    "videojs-autoplay-toggle": "theonion/videojs-autoplay-toggle#5b41631e229e2ea5178cf6ed2070c276f6019584"
+    "videojs-sharetools": "0.1.6",
+    "videojs-autoplay-toggle": "theonion/videojs-autoplay-toggle#8cdc9db546417f431b4519b88d649dfd174f1ee4",
+    "videojs-vast": "theonion/videojs-vast-plugin#e257fa62cf3969a5efc5a9a5513e906d082933e1"
   }
 }
