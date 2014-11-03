@@ -19,8 +19,8 @@
   </style>
 
   <!--[if lt IE 9]><script src="lib/es5.js"></script><![endif]-->
-  <link href="http://vjs.zencdn.net/4.7.1/video-js.css" rel="stylesheet">
-  <script src="http://vjs.zencdn.net/4.7.1/video.js"></script>
+  <link href="videojs/dist/video-js/video-js.css" rel="stylesheet">
+  <script src="videojs/dist/video-js/video.dev.js"></script>
 
   <!-- ads plugin -->
   <link href="videojs-contrib-ads/src/videojs.ads.css" rel="stylesheet" type="text/css">
@@ -40,6 +40,7 @@
   <p class="description">Video.js plugin integration examples.</p>
 
   <div class="example-video-container">
+    <p class="description">This video should autoplay based on plugin.</p>
     <video id="vid1" class="video-js vjs-default-skin" autoplay controls preload="auto"
         poster="http://video-js.zencoder.com/oceans-clip.png"
         data-setup='{}'
@@ -54,7 +55,8 @@
   </div>
 
   <div class="example-video-container">
-    <video id="vid2" class="video-js vjs-default-skin" autoplay controls preload="auto"
+    <p class="description">This video should not autoplay based on plugin.</p>
+    <video id="vid2" class="video-js vjs-default-skin" controls preload="auto"
         poster="http://video-js.zencoder.com/oceans-clip.png"
         data-setup='{}'
         width='640'
@@ -68,15 +70,27 @@
   </div>
 
   <script>
-    var vid1 = videojs('vid1'),
-        vid2 = videojs('vid2');
+    var autoplayToggleNamespace = 'videojs-plugin-integration';
+    var autoplayFromStorage = videojs.autoplaySettingFromStorage({
+      namespace: autoplayToggleNamespace
+    });
+
+    var vid1 = videojs('vid1', {autoplay: autoplayFromStorage});
+    var vid2 = videojs('vid2');
+
+vid1.on('play', function () { console.log('V1 PLAY') });
+vid1.on('pause', function () { console.log('V1 PAUSE') });
+
+vid2.on('play', function () { console.log('V2 PLAY') });
+vid2.on('pause', function () { console.log('V2 PAUSE') });
 
     vid1.muted(true);
+    vid1.ads();
     vid1.vast({
       url: 'http://ad3.liverail.com/?LR_PUBLISHER_ID=1331&LR_CAMPAIGN_ID=229&LR_SCHEMA=vast2'
     });
     vid1.autoplayToggle({
-      namespace: 'videojs-plugin-integration'
+      namespace: autoplayToggleNamespace
     });
     vid1.sharetools = {
       showOnPause: true,
@@ -94,11 +108,12 @@
     };
 
     vid2.muted(true);
+    vid2.ads();
     vid2.vast({
       url: 'http://ad3.liverail.com/?LR_PUBLISHER_ID=1331&LR_CAMPAIGN_ID=229&LR_SCHEMA=vast2'
     });
     vid2.autoplayToggle({
-      namespace: 'videojs-plugin-integration'
+      namespace: autoplayToggleNamespace
     });
     vid2.sharetools = {
       showOnPause: true,
