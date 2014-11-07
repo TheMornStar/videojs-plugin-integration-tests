@@ -2,7 +2,7 @@
   "name": "videojs-plugin-integration-tests",
   "dependencies": {
     "videojs": "4.10.2",
-    "videojs-sharetools": "0.1.6",
+    "videojs-sharetools": "0.1.9",
     "videojs-autoplay-toggle": "1.0.6",
     "videojs-vast": "0.1.9"
   }

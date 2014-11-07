@@ -5,6 +5,7 @@ VideoJS plugin integration testing platform.
 To run:
 ```bash
 $ bower install
+$ cd example
 $ npm install
 $ node web.js
 ```

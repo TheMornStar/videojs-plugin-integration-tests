@@ -9,8 +9,8 @@ var PORT = 3000;
 var HOME_PAGE = 'example.html';
 
 // start server
-app.use(serveStatic('static', {'index': [HOME_PAGE]}));
-app.use(serveStatic('bower_components', {'index': false}));
+app.use(serveStatic('static', {index: [HOME_PAGE]}));
+app.use(serveStatic('../bower_components', {index: false, extensions: ['css', 'html']}));
 app.listen(PORT);
 
 // open browser
