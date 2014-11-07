@@ -8,4 +8,5 @@ $ bower install
 $ npm install
 $ node web.js
 ```
-Then navigate to [localhost:3000](http://localhost:3000)
+
+A browser window will open up to the location of the testing platform.
