@@ -35,6 +35,10 @@
   <link href="videojs-autoplay-toggle/videojs.autoplay-toggle.css" rel="stylesheet" type="text/css">
   <script src="videojs-autoplay-toggle/videojs.autoplay-toggle.js"></script>
 
+  <!-- sharetools plugin -->
+  <link href="videojs-sharetools/videojs.sharetools.css" rel="stylesheet" type="text/css">
+  <script src="videojs-sharetools/videojs.sharetools.js"></script>
+
 </head>
 <body>
   <p class="description">Video.js plugin integration examples.</p>
@@ -86,7 +90,7 @@
     vid1.autoplayToggle({
       namespace: autoplayToggleNamespace
     });
-    vid1.sharetools = {
+    vid1.sharetools({
       showOnPause: true,
       videoId: 'vid1',
       shareUrl: "http://" + document.location.host + '123/abc',
@@ -99,7 +103,7 @@
       twitter: function(settings) {
         return "https://twitter.com/share?url=123tsd&via=@asdf";
       }
-    };
+    });
 
     vid2.muted(true);
     vid2.ads();
@@ -109,7 +113,7 @@
     vid2.autoplayToggle({
       namespace: autoplayToggleNamespace
     });
-    vid2.sharetools = {
+    vid2.sharetools({
       showOnPause: true,
       videoId: 'vid2',
       shareUrl: "http://" + document.location.host + '123/abc',
@@ -122,7 +126,7 @@
       twitter: function(settings) {
         return "https://twitter.com/share?url=123tsd&via=@asdf";
       }
-    };
+    });
   </script>
 
 </body>
